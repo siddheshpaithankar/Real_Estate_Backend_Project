@@ -1,0 +1,169 @@
+*************************************************************Real_Estate_Documentation************************************************************************
+
+*CREATE ADMIN : 
+              # POST - http://localhost:8080/api/admin/register
+
+              # RequestBody - {
+                               "name": "sheron",
+                               "userName": "sheron@123",
+                               "password": "sheron123"
+
+                               }
+
+              # ResponseBody - {
+                                  Admin registered successfully.
+                               }
+
+*CREATE USERS: 
+             # POST - http://localhost:8080/api/user/register
+
+             # RequestBody - {
+                                
+                                "agentName": "sid",
+                                "email": "sid@123",
+                                "phone": "1234567890",
+                                "status": true,
+                                "password": "sid123"
+                             }
+
+             # ResponseBody - {User registered successfully.}
+
+             # Note - Only Admin can create Users.
+
+*UPDATE USERS: 
+             # PUT - http://localhost:8080/api/user/update/1
+
+             # RequestBody - 
+                              {
+                                "agentName": "John Doe Updated",
+                                "email": "johndoe_updated@example.com",
+                                "phone": "9876543211",
+                                "status": false,
+                                "password": "newpassword"
+                              }
+
+            # ResponseBody - {
+                              "id": 1,
+                              "agentName": "John Doe Updated",
+                              "email": "johndoe_updated@example.com",
+                              "phone": "9876543211",
+                              "status": false,
+                              "password": "$2a$10$l6S8EgEhsg3Kxrrr.fd8DepbEinRk22RaW08M8MxOal1RBdhN.XCG"
+                             }
+     
+             # Note - Only Admin can update Users.
+
+* DELETE USERS:
+              # DELETE - http://localhost:8080/api/user/delete/1
+
+              # ResponseBody- {"User deleted successfully."}       
+
+* CREATE COUNTRY: 
+                # POST - http://localhost:8080/api/location
+
+                # RequestBody -{
+                                  "country": "usa"
+                               }
+
+                # ResponseBody  - {
+                                   "id": 1,
+                                   "country": "usa"
+                                  }
+        
+                # Note - Only Admin can delete location 
+
+* CREATE PROPERTIES: 
+                   # POST - http://localhost:8080/api/properties/create?locationId=1&amenitiesIds=1
+
+                   # RequestBody - {
+                                    "title": "Agriculturer land",
+                                    "description": "A Agriculturer land located near the sambhajinagar.",
+                                    "type": "land",
+                                    "status": true,
+                                    "price": "30200",
+                                    "ownerName":"ratan-tata"
+                                   }
+
+                 # ResponseBody - {
+                                     "id": 7,
+                                     "title": "Agriculturer land",
+                                     "description": "A Agriculturer land located near the sambhajinagar.",
+                                     "type": "land",
+                                     "location": {
+                                     "id": 1,
+                                     "country": "usa"
+                                           },
+                                   "createdByAdmin": {
+                                   "id": 1,
+                                   "name": "sheron",
+                                   "userName": "sheron@123",
+                                   "password": "$2a$10$1QMPINrihaYHRLbbMIOYtenOdCnEOk441V5c01rGTEEn1tebYblcO"
+                                        },
+                                   "createdByUser": null,
+                                   "status": true,
+                                   "amenities": [
+                                        {
+                                   "id": 1,
+                                   "name": "swimming-pool"
+                                          }
+                                     ],
+                                  "price": "30200",
+                                  "ownerName": "ratan-tata"
+                                }
+
+* UPDATE PROPERTIES: 
+                   # PUT - http://localhost:8080/api/properties/update/1                    // give me 404 error on postman 
+
+                   # RequestBody - {
+                                     "id": 1,
+                                     "title": "Updated Apartment",
+                                     "description": "A renovated luxury apartment",
+                                     "type": "Apartment",
+                                     "price": "1500000",
+                                     "status": true,
+                                     "ownerName": "John Doe"
+                                    }
+
+* DELETE PROPERTIES:
+                   # DELETE - http://localhost:8080/api/properties/delete/1                  // give me 500 error on postman 
+
+* CREATE AMANITIES: 
+                  # POST- http://localhost:8080/api/amenities/create
+
+                  # RequestBody - {
+                                    "name": "swimming-pool"
+                                  }
+ 
+                  # ResponseBody - {
+                                     "id": 1,
+                                     "name": "swimming-pool"
+                                   }
+
+                  # Note - Only Admin can create  amanities
+
+* SEARCH BY OWNER_NAME:  
+                      # GET - http://localhost:8080/api/properties/owner/ratan-tata
+
+                      # Note - Search by using  amanities
+
+* SEARCH BY PRICE : 
+                  # GET -http://localhost:8080/api/properties/price/30000
+                  # Note - Search   by  price 
+
+* SEARCH BY LOCATION: 
+                    #GET - http://localhost:8080/api/properties/location/1
+                    # Note - Search   by location 
+
+
+
+                   
+
+
+ 
+
+                  
+              
+ 
+
+                             
+
